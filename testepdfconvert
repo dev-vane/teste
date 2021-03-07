@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
+namespace ConvertToPdf
+{
+    public partial class Form1 : Form
+    {
+        Microsoft.Office.Interop.Word.Document wordDoc { get; set; }
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Convertor();
+        }
+        public void Convertor()
+        {
+            Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
+            wordDoc = app.Documents.Open(@"C:\Users\user\source\repos\ConvertToPdf\EfolioA.Docx");
+            wordDoc.ExportAsFixedFormat(@"C:\Users\user\source\repos\ConvertToPdf\EfolioA.pdf", Microsoft.Office.Interop.Word.WdExportFormat.wdExportFormatPDF);
+
+            wordDoc.Close(Microsoft.Office.Interop.Word.WdSaveOptions.wdDoNotSaveChanges);
+            app.Quit();
+
+            Marshal.ReleaseComObject(wordDoc);
+            Marshal.ReleaseComObject(app);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Convertor1();
+        }
+        public void Convertor1()
+        {
+
+
+        }
+    }
+}
