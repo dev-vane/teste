@@ -1,2 +1,2 @@
 # teste
-Apenas apra teste de faculdade.
+Apenas para teste de faculdade.
